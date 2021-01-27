@@ -1,18 +1,19 @@
 import discord
+import asyncio
+from discord.ext import commands
 from config.config import *
+#TODO change directory name for the tokens
 
-client = discord.Client()
+bot = commands.Bot(command_prefix='$')
 
-@client.event
+@bot.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print('We have logged in as {0.user}'.format(bot))
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
-
-client.run(MY_TOKEN)
+#@bot.event
+#async def on_message(message):
+#    if message.author == bot.user:
+#        return
+#    msg = message.content
+#    if message.content.startswith('$hello'):
+#        await message.channel.send('Hello!')
